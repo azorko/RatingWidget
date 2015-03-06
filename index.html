@@ -11,11 +11,28 @@
 </head>
 
 <body>
-	<div></div>
+	<h4>Choose Rating</h4>
+	<div class="rating"></div>
+	<div>
+		<button>Submit Rating</button>
+	</div>	
+	<h4>Result</h4>
+	<div class="result"></div>
+	<span class="score"></span>
 	
 	<script>
-	var rating = new Rating(document.querySelector("div"), document);
-	var score = rating
+	var rating = document.querySelector(".rating");
+	var result = document.querySelector(".result");
+	var score = document.querySelector(".score");
+	var ratingWidget = new Rating(rating, result, document);
+	var submit = document.querySelector("button");
+	submit.addEventListener("click", submitScore);
+	
+	function submitScore () {
+		ratingWidget.addScore();
+		score.innerText = ratingWidget.getScore();
+	};
+	
 	</script>
 </body>
 
